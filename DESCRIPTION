@@ -6,6 +6,6 @@ Date: 2016-09-23
 Author: Taylor B. Arnold
 Maintainer: Taylor B. Arnold <tarnold2@richmond.edu>
 Description: Provides a consistent format for fitting models in R.
-Imports: dplyr, lazyeval, stats
+Imports: plyr, dplyr, lazyeval, stats, ggplot2, ggmap
 License: GPL-2
 RoxygenNote: 5.0.1
