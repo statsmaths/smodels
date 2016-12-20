@@ -82,7 +82,7 @@ add_prediction <- function(data, object){
 #' @export
 bin <- function(x, n) {
 
-  breaks <- quantile(x, probs = seq(0, 1, length.out = n + 1))
+  breaks <- quantile(x, probs = seq(0, 1, length.out = n + 1), na.rm = TRUE)
   cut(x, breaks, include.lowest = TRUE)
 
 }
@@ -186,8 +186,45 @@ mplot <- function(x, y, ..., data, maptype = c("toner", "road"), zoom = 1,
   my_map
 }
 
+#' Calculate deciles
+#'
+#' @param x        values to compute deciles for
+#'
+#' @importFrom         stats quantile
+#' @export
+deciles <- function(x) {
+  stats::quantile(x, seq(0, 1, 0.1))
+}
 
+#' Calculate ventiles
+#'
+#' @param x        values to compute ventiles for
+#'
+#' @importFrom         stats quantile
+#' @export
+ventiles <- function(x) {
+  stats::quantile(x, seq(0, 1, 0.05))
+}
 
+#' Calculate quartiles
+#'
+#' @param x        values to compute quartiles for
+#'
+#' @importFrom         stats quantile
+#' @export
+quartiles <- function(x) {
+  stats::quantile(x, seq(0, 1, 0.25))
+}
+
+#' Calculate quartiles
+#'
+#' @param x        values to compute quartiles for
+#'
+#' @importFrom         stats quantile
+#' @export
+percentiles <- function(x) {
+  stats::quantile(x, seq(0, 1, 0.01))
+}
 
 
 .compact <- function (x) Filter(Negate(is.null), x)
