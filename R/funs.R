@@ -105,7 +105,7 @@ bin <- function(x, n) {
 #' @param location an option string describing the location to center the box on.
 #'
 #' @export
-mplot <- function(x, y, ..., data, maptype = c("toner", "road"), zoom = 1,
+mplot <- function(x, y, ..., data, maptype = "toner", zoom = 1,
                   detail = 0, location = NULL) {
   if (missing(x))
     stop("You must supply a longitude")
@@ -115,7 +115,6 @@ mplot <- function(x, y, ..., data, maptype = c("toner", "road"), zoom = 1,
   detail <- as.integer(detail)
 
   # Get map range and zoom level:
-  maptype <- match.arg(maptype)
   if (is.null(location)) {
     lon_range <- range(data[[deparse(substitute(x))]])
     lat_range <- range(data[[deparse(substitute(y))]])
