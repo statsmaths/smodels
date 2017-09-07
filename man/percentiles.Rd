@@ -12,4 +12,3 @@ percentiles(x)
 \description{
 Calculate quartiles
 }
-

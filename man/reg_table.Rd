@@ -16,4 +16,3 @@ reg_table(object, level = NULL, mu = 0)
 \description{
 Compute regression table
 }
-

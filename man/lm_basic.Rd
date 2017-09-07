@@ -16,4 +16,3 @@ model to be fitted.}
 \description{
 Fit a basic linear model
 }
-

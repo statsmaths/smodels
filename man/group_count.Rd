@@ -16,4 +16,3 @@ group_count(.data, ..., sort = FALSE)
 \description{
 Count number of elements in each group.
 }
-

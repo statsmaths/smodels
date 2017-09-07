@@ -14,4 +14,3 @@ add_prediction(data, object)
 \description{
 Add predictions from a fitted model to a data set
 }
-

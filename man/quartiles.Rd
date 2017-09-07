@@ -12,4 +12,3 @@ quartiles(x)
 \description{
 Calculate quartiles
 }
-

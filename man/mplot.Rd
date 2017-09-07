@@ -4,7 +4,7 @@
 \alias{mplot}
 \title{A smarter map function}
 \usage{
-mplot(x, y, ..., data, maptype = c("toner", "road"), zoom = 1, detail = 0,
+mplot(x, y, ..., data, maptype = "toner", zoom = 1, detail = 0,
   location = NULL)
 }
 \arguments{
@@ -30,4 +30,3 @@ maps. Negative integers are allowed, but are rarely useful.}
 \description{
 A smarter map function
 }
-

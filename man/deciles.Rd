@@ -12,4 +12,3 @@ deciles(x)
 \description{
 Calculate deciles
 }
-

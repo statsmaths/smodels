@@ -14,4 +14,3 @@ bin(x, n)
 \description{
 Map points to quantiles
 }
-

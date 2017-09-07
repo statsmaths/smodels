@@ -12,4 +12,3 @@ ventiles(x)
 \description{
 Calculate ventiles
 }
-

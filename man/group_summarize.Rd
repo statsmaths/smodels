@@ -14,4 +14,3 @@ group_summarize(.data, ...)
 \description{
 Summarize a data set by group or groups
 }
-
