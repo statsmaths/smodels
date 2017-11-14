@@ -4,14 +4,17 @@
 \alias{graph_data}
 \title{Add network metadata to edge and node lists}
 \usage{
-graph_data(nodes, edges, directed = FALSE)
+graph_data(edges, nodes = NULL, nodes2 = NULL, directed = FALSE,
+  layout = NULL)
 }
 \arguments{
-\item{.data}{a data_frame containing the variables in the model}
+\item{edges}{data frame describing the edges}
 
-\item{...}{variables to group by.}
+\item{nodes}{data frame describing the nodes}
 
-\item{sort}{logical. Should the data be sorted on output.}
+\item{directed}{logical. Is this a directed graph?}
+
+\item{bipartite}{logical. Is this a directed graph?}
 }
 \description{
 Add network metadata to edge and node lists

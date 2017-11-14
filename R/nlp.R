@@ -4,13 +4,10 @@
 #'
 #' @export
 term_list_to_df <- function(tokens) {
-  require("methods")
-  require("Matrix")
-  require("dplyr")
 
   id <- mapply(function(u, v) rep(u, length(v)),
                                seq_along(tokens), tokens)
-  df <- data_frame(id = unlist(id),
+  df <- dplyr::data_frame(id = unlist(id),
                    token = unlist(tokens))
 
   df
@@ -62,6 +59,7 @@ term_df_to_matrix <- function(x, min_df = 0.0, max_df = 1.0,
   df <- dplyr::group_by_(df, "id", "lid")
   df <- dplyr::summarize_(df, count = "sum(count)")
 
+  count <- NULL
   if (scale) {
     df <- dplyr::group_by_(df, "id")
     df <- dplyr::mutate(df, count = count / sum(count))
