@@ -2,10 +2,10 @@ Package: smodels
 Type: Package
 Title: Consistent format for fitting models
 Version: 1.0
-Date: 2016-09-23
+Date: 2020-02-05
 Author: Taylor B. Arnold
 Maintainer: Taylor B. Arnold <tarnold2@richmond.edu>
-Description: Provides a consistent format for fitting models in R.
-Imports: plyr, dplyr, lazyeval, stats, ggplot2, ggmap, Matrix, methods
+Description: Provides helper functions for working with dplyr and ggplot2.
+Imports: stats, Hmisc, dplyr
 License: GPL-2
-RoxygenNote: 6.0.1
+RoxygenNote: 7.0.2
