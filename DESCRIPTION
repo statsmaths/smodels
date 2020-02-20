@@ -6,6 +6,6 @@ Date: 2020-02-05
 Author: Taylor B. Arnold
 Maintainer: Taylor B. Arnold <tarnold2@richmond.edu>
 Description: Provides helper functions for working with dplyr and ggplot2.
-Imports: stats, Hmisc, dplyr
+Imports: stats, Hmisc, dplyr, ggplot2
 License: GPL-2
 RoxygenNote: 7.0.2
