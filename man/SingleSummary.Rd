@@ -8,8 +8,12 @@
 \alias{sm_sum}
 \alias{sm_min}
 \alias{sm_max}
+\alias{sm_cor}
+\alias{sm_cov}
+\alias{sm_var}
 \alias{sm_na_count}
 \alias{sm_count}
+\alias{sm_collapse}
 \title{Numeric Summaries}
 \usage{
 sm_mean(x, name = NULL)
@@ -24,9 +28,17 @@ sm_min(x, name = NULL)
 
 sm_max(x, name = NULL)
 
+sm_cor(x, y, name = NULL)
+
+sm_cov(x, y, name = NULL)
+
+sm_var(x, y, name = NULL)
+
 sm_na_count(x, name = NULL)
 
 sm_count(x, name = NULL)
+
+sm_collapse(x, name = NULL, collapse = "; ")
 }
 \arguments{
 \item{x}{the variable to summarize. Will be used deparsed to infer the
@@ -34,6 +46,11 @@ names of of the summaries.}
 
 \item{name}{provide a prefix variable name for the output. Set to
 \code{NULL} to infer from the input.}
+
+\item{y}{secomd variable to summarize, for correlation, covariance, and
+variance.}
+
+\item{collapse}{string to use to collapse text values with `sm_collapse`}
 }
 \description{
 Summarize a variable through a single numeric summary, such as the mean
