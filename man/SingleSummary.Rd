@@ -13,7 +13,7 @@
 \alias{sm_var}
 \alias{sm_na_count}
 \alias{sm_count}
-\alias{sm_collapse}
+\alias{sm_paste}
 \title{Numeric Summaries}
 \usage{
 sm_mean(x, name = NULL)
@@ -38,7 +38,7 @@ sm_na_count(x, name = NULL)
 
 sm_count(x, name = NULL)
 
-sm_collapse(x, name = NULL, collapse = "; ")
+sm_paste(x, name = NULL, sep = "; ")
 }
 \arguments{
 \item{x}{the variable to summarize. Will be used deparsed to infer the
@@ -50,7 +50,7 @@ names of of the summaries.}
 \item{y}{secomd variable to summarize, for correlation, covariance, and
 variance.}
 
-\item{collapse}{string to use to collapse text values with `sm_collapse`}
+\item{sep}{string to use to collapse text values with `sm_paste`}
 }
 \description{
 Summarize a variable through a single numeric summary, such as the mean

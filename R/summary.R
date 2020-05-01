@@ -9,7 +9,7 @@
 #'               variance.
 #' @param name   provide a prefix variable name for the output. Set to
 #'               \code{NULL} to infer from the input.
-#' @param collapse   string to use to collapse text values with `sm_collapse`
+#' @param sep    string to use to collapse text values with `sm_paste`
 #' @name SingleSummary
 
 #' @rdname SingleSummary
@@ -122,9 +122,9 @@ sm_count <- function(x, name = NULL) {
 
 #' @rdname SingleSummary
 #' @export
-sm_collapse <- function(x, name = NULL, collapse = "; ") {
-  res <- as.data.frame(paste(x, collapse = collapse))
+sm_paste <- function(x, name = NULL, sep = "; ") {
+  res <- as.data.frame(paste(x, collapse = sep))
   cname <- ifelse(is.null(name), deparse(substitute(x)), name)
-  names(res) <- sprintf("%s_collapse", cname)
+  names(res) <- sprintf("%s_paste", cname)
   res
 }

@@ -4,12 +4,14 @@
 \alias{sm_graph_layout}
 \title{Add network metadata and layout information}
 \usage{
-sm_graph_layout(edges, node_name = "id")
+sm_graph_layout(edges, node_name = "id", directed = FALSE)
 }
 \arguments{
 \item{edges}{data frame describing the edges}
 
 \item{node_name}{name of the node id column; defaults to "id"}
+
+\item{directed}{logical; is the graph directed?}
 }
 \description{
 Add network metadata and layout information
