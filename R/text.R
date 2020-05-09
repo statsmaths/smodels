@@ -41,6 +41,7 @@ sm_text_tfidf <- function(
   assert(doc_var %in% names(object), "no valid 'doc_var' found")
   assert(token_var %in% names(object), "no valid 'token_var' found")
 
+  doc_id <- token <- tf <- NULL
   x <- data.frame(
     doc_id = object[[doc_var]],
     token = object[[token_var]],
