@@ -14,7 +14,7 @@ NULL
 
 #' @rdname ConfInt
 #' @export
-sm_mean_cl_boot <- function(x, ..., name = NULL) {
+sm_mean_ci_boot <- function(x, ..., name = NULL) {
   tf <- do.call(Hmisc::smean.cl.boot, list(x = quote(x), ...))
   tf <- as.data.frame(as.list(tf))
   cname <- ifelse(is.null(name), deparse(substitute(x)), name)
@@ -24,7 +24,7 @@ sm_mean_cl_boot <- function(x, ..., name = NULL) {
 
 #' @rdname ConfInt
 #' @export
-sm_mean_cl_normal <- function(x, ..., name = NULL) {
+sm_mean_ci_normal <- function(x, ..., name = NULL) {
   tf <- do.call(Hmisc::smean.cl.normal, list(x = quote(x), ...))
   tf <- as.data.frame(as.list(tf))
   cname <- ifelse(is.null(name), deparse(substitute(x)), name)

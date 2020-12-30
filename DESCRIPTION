@@ -1,11 +1,11 @@
 Package: smodels
 Type: Package
 Title: Consistent format for fitting models
-Version: 1.0
+Version: 1.1
 Date: 2020-02-05
 Author: Taylor B. Arnold
 Maintainer: Taylor B. Arnold <tarnold2@richmond.edu>
 Description: Provides helper functions for working with dplyr and ggplot2.
-Imports: stats, utils, Hmisc, dplyr, ggplot2, tibble, irlba, umap, igraph, glmnet, grDevices
+Imports: stats, utils, Hmisc, dplyr, ggplot2, tibble, irlba, umap, igraph, glmnet, grDevices, tokenizers
 License: GPL-2
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1

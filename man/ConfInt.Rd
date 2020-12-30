@@ -2,14 +2,14 @@
 % Please edit documentation in R/confint.R
 \name{ConfInt}
 \alias{ConfInt}
-\alias{sm_mean_cl_boot}
-\alias{sm_mean_cl_normal}
+\alias{sm_mean_ci_boot}
+\alias{sm_mean_ci_normal}
 \alias{sm_median_hilow}
 \title{Confidence interval summaries}
 \usage{
-sm_mean_cl_boot(x, ..., name = NULL)
+sm_mean_ci_boot(x, ..., name = NULL)
 
-sm_mean_cl_normal(x, ..., name = NULL)
+sm_mean_ci_normal(x, ..., name = NULL)
 
 sm_median_hilow(x, ..., name = NULL)
 }
