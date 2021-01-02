@@ -190,3 +190,100 @@ sm_dunn_ll <- function(object, group_name, token_name = "lemma")
 
   tibble::tibble(lemma = names(ll), dunn = as.numeric(ll), group = group_dom)
 }
+
+#' Compute Tidy LDA Topic Model
+#'
+#' @param X              A term-frequency matrix
+#' @param num_topics     Integer. Number of topics to learn
+#'
+#' @return  A named list of two data frames.
+#'
+#' @export
+sm_lda_topics <- function(X, num_topics = 16)
+{
+  lda_model <- topicmodels::LDA(
+    x = X, k = num_topics, control = list(seed = 2811, verbose = 1)
+  )
+
+  docs <- tibble::tibble(
+    doc_id = rep(rownames(X), num_topics),
+    topic = rep(seq_len(num_topics), each = nrow(X)),
+    prob = as.numeric(lda_model@gamma)
+  )
+  terms <- tibble::tibble(
+    token = rep(colnames(X), each = num_topics),
+    topic = rep(seq_len(num_topics), ncol(X)),
+    beta = as.numeric(lda_model@beta)
+  )
+
+  return(list(docs = docs, terms = terms))
+}
+
+#' Create a data frame of Kmeans clusters
+#'
+#' @param df             A data frame with a all numeric columns except the
+#'                       one containing the document ID
+#' @param clusters       Integer. Number of clusters to identify.
+#' @param item_name      Name of the column containing the item id.
+#'
+#' @return  A data frame with a column indicating the cluster ID.
+#'
+#' @export
+sm_kmeans <- function(df, clusters = 3, item_name = "document")
+{
+  X <- as.matrix(df[,-which(names(df) == item_name)])
+  df$cluster <- as.numeric(stats::kmeans(X, centers = clusters)$cluster)
+  df
+}
+
+#' Create a data frame of Kmeans clusters
+#'
+#' @param X              A TF-IDF matrix
+#' @param max_depth      Depth of the hierarchical clustering algorithm.
+#'                       The maximum number of clusters will be 2^(max_depth).
+#' @param balance        Should clusters be made to have uniform size.
+#'
+#' @return  A data frame.
+#'
+#' @export
+sm_spectral_cluster <- function(X, max_depth = 4, balance = FALSE)
+{
+  tfidf <- scale(X, center=FALSE)
+  A <- tcrossprod(tfidf) / ncol(tfidf)
+  diag(A) <- 0
+  Dinvroot <- diag(1 / sqrt(apply(A, 1, sum)))
+  L <- diag(nrow(A)) - Dinvroot %*% A %*% Dinvroot
+
+  # cycle over the second eigenvalues
+  groups <- rep(0, nrow(L))
+  for (depth in seq(1, max_depth)) {
+
+    new_groups <- groups
+    second_vals <- rep(0, length(groups))
+
+    for (g in unique(groups)) {
+      index <- which(groups == g)
+      e <- eigen(L[index,index])
+      vals <- e$vector[,ncol(e$vector)-1]
+      if (balance) { m <- stats::median(vals) } else { m <- 0 }
+      new_groups[index][vals > m]  <- g * 10 + 1
+      new_groups[index][vals <= m] <- g * 10
+      second_vals[index] <- vals
+    }
+    groups <- new_groups
+  }
+  groups <- sprintf(sprintf("%%0%dd", max_depth), groups)
+
+  ntopics <- length(unique(groups))
+  docs <- matrix(0, nrow=nrow(L), ncol=ntopics)
+  for (i in 1:length(unique(groups)))
+  {
+    docs[groups == unique(groups)[i],i] <- 1
+  }
+
+  return(tibble::tibble(
+    doc_id = rownames(X),
+    cluster = as.numeric(factor(groups)),
+    groups = groups
+  ))
+}

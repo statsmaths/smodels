@@ -6,6 +6,6 @@ Date: 2020-02-05
 Author: Taylor B. Arnold
 Maintainer: Taylor B. Arnold <tarnold2@richmond.edu>
 Description: Provides helper functions for working with dplyr and ggplot2.
-Imports: stats, utils, Hmisc, dplyr, ggplot2, tibble, irlba, umap, igraph, glmnet, grDevices, tokenizers
+Imports: stats, utils, Hmisc, topicmodels, dplyr, ggplot2, tibble, irlba, umap, igraph, glmnet, grDevices, tokenizers
 License: GPL-2
 RoxygenNote: 7.1.1
