@@ -104,8 +104,9 @@ sm_tidy_umap <- function(x, n = 2, random_state = 1, item_name = "document", ...
 {
   x <- as.matrix(x)
   df <- umap::umap(x, n_components = n, random_state = random_state, ...)$layout
-  df <- tibble::as_tibble(df)
   names(df) <- sprintf("v%d", seq_len(ncol(df)))
+  df <- tibble::as_tibble(df)
+  names(df) <- tolower(names(df))
   if (!is.null(rownames(x)))
   {
     df <- dplyr::bind_cols(tibble::tibble(rownames(x)), df)
